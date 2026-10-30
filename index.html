@@ -3,46 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daiwik Integrated | Consultancy & DDGS Rice Trading</title>
+    <title>Daiwik Integrated | Corporate Consultancy & DDGS Rice Trading</title>
     <style>
         :root {
-            --primary-color: #0a2540; /* Logo Navy Blue */
-            --secondary-color: #c5a059; /* Logo Gold */
-            --text-dark: #333333;
+            --primary-color: #0a2540; /* Premium Navy Blue */
+            --secondary-color: #c5a059; /* Matte Gold */
+            --text-dark: #222222;
             --text-light: #ffffff;
-            --bg-light: #f4f7f9;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
             color: var(--text-dark);
-            background-color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--bg-light);
+            line-height: 1.7;
         }
 
-        /* Header & Navigation */
+        /* Top Header & Navigation */
         header {
             background-color: var(--text-light);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             position: fixed;
             width: 100%;
             top: 0;
-            left: 0;
             z-index: 1000;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -53,17 +49,18 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            cursor: pointer;
         }
 
         .logo-area img {
-            height: 50px;
+            height: 55px;
             width: auto;
         }
 
         .brand-name {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 26px;
+            font-weight: 800;
             color: var(--primary-color);
             letter-spacing: 0.5px;
         }
@@ -75,314 +72,274 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 600;
-            transition: color 0.3s;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
         }
 
-        nav ul li a:hover {
+        nav ul li a.active, nav ul li a:hover {
+            color: var(--text-light);
+            background-color: var(--primary-color);
+        }
+
+        /* Multi-Page Tab Content Management */
+        .page-content {
+            display: none;
+            margin-top: 85px;
+            min-height: 80vh;
+        }
+
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Banner Components */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-color) 60%, #143d66);
+            color: var(--text-light);
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-banner h1 {
+            font-size: 42px;
             color: var(--secondary-color);
+            margin-bottom: 15px;
         }
 
-        /* Hero Section */
+        .inner-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Page 1: Home Details */
         .hero {
-            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.9)), url('https://unsplash.com') no-repeat center center/cover;
-            height: 100vh;
+            background: linear-gradient(rgba(10, 37, 64, 0.88), rgba(10, 37, 64, 0.92)), url('https://unsplash.com') no-repeat center center/cover;
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--text-light);
             padding: 0 20px;
-            margin-top: 80px;
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-content h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-
-        .hero-content h1 span {
-            color: var(--secondary-color);
-        }
-
-        .hero-content p {
-            font-size: 20px;
-            margin-bottom: 35px;
-            color: #e0e0e0;
-        }
+        .hero h1 { font-size: 52px; margin-bottom: 20px; }
+        .hero h1 span { color: var(--secondary-color); }
+        .hero p { font-size: 22px; margin-bottom: 30px; color: #d1d5db; }
 
         .btn {
             display: inline-block;
             background-color: var(--secondary-color);
             color: var(--primary-color);
-            padding: 12px 30px;
+            padding: 14px 35px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            transition: all 0.3s;
+            cursor: pointer;
             border: 2px solid var(--secondary-color);
         }
 
-        .btn:hover {
-            background-color: transparent;
-            color: var(--secondary-color);
-        }
+        .btn:hover { background-color: transparent; color: var(--secondary-color); }
 
-        /* Section Styling */
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            margin: 10px auto 0;
-        }
-
-        /* About Section */
-        .about-text {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 18px;
-            color: #555;
-        }
-
-        /* Consultancy Section */
-        .services-grid {
+        .home-intro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border-top: 4px solid var(--primary-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-top-color: var(--secondary-color);
-        }
-
-        .service-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        /* Trading Section */
-        .trading-section {
-            background-color: var(--bg-light);
-            border-radius: 12px;
-            padding: 40px;
-            display: flex;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 60px 0;
             align-items: center;
+        }
+
+        /* Page 2: About Us Details */
+        .about-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .pillar-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        /* Page 3: Detailed Consultancy */
+        .services-large-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
+        }
+
+        .service-large-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-large-box h3 { color: var(--primary-color); font-size: 24px; margin-bottom: 15px; }
+        .service-large-box ul { margin-left: 20px; margin-top: 15px; margin-bottom: 20px;}
+
+        /* Page 4: Bulk Rice Trading Detailed */
+        .trading-layout {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .trading-flex {
+            display: flex;
+            gap: 50px;
+            align-items: center;
             flex-wrap: wrap;
         }
 
-        .trading-content {
-            flex: 1;
-            min-width: 300px;
+        .trading-info-panel { flex: 1; min-width: 400px; }
+        .trading-spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .trading-content h3 {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+        .trading-spec-table th, .trading-spec-table td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            text-align: left;
         }
 
-        .trading-content ul {
-            list-style-position: inside;
-            margin-bottom: 25px;
-        }
+        .trading-spec-table th { background-color: var(--primary-color); color: var(--text-light); }
 
-        .trading-content ul li {
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .trading-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .trading-image img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Contact Section */
-        .contact-container {
+        /* Page 5: Contact Layout */
+        .contact-flex-layout {
             display: flex;
             gap: 50px;
             flex-wrap: wrap;
         }
 
-        .contact-info {
+        .contact-details-box {
             flex: 1;
-            min-width: 300px;
-        }
-
-        .contact-info h3 {
-            color: var(--primary-color);
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .info-item {
-            margin-bottom: 20px;
-        }
-
-        .info-item strong {
-            color: var(--primary-color);
-            display: block;
-        }
-
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: var(--primary-color);
+            min-width: 350px;
+            background: var(--primary-color);
             color: var(--text-light);
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .contact-details-box h2 { color: var(--secondary-color); margin-bottom: 30px; }
+
+        .form-panel {
+            flex: 1.5;
+            min-width: 400px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-item { flex: 1; display: flex; flex-direction: column; }
+        .input-item label { font-weight: 600; margin-bottom: 8px; color: var(--primary-color); }
+        .input-item input, .input-item textarea {
+            padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px;
+        }
+
+        /* Popup Windows Layout */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            transition: background 0.3s;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
         }
 
-        .submit-btn:hover {
-            background-color: #143d66;
+        .popup-overlay.open { opacity: 1; pointer-events: auto; }
+        .popup-window {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
         }
 
-        /* Footer */
+        .popup-overlay.open .popup-window { transform: scale(1); }
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-popup:hover { color: var(--text-dark); }
+        .popup-window h3 { color: var(--primary-color); font-size: 26px; margin-bottom: 20px; border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; }
+
+        /* Footer Element */
         footer {
             background-color: var(--primary-color);
             color: var(--text-light);
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 5px solid var(--secondary-color);
         }
 
-        footer p {
-            font-size: 14px;
-            color: #ccc;
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                gap: 15px;
-            }
-            .hero-content h1 {
-                font-size: 32px;
-            }
-            .hero-content p {
-                font-size: 16px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header Section -->
-    <header>
-        <div class="nav-container">
-            <div class="logo-area">
-                <!-- if logo.png is present in folder, it will load here -->
-                <img src="logo.png" alt="Daiwik Integrated Logo" onerror="this.style.display='none'">
-                <div class="brand-name">DAIWIK <span>INTEGRATED</span></div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#consultancy">Consultancy</a></li>
-                    <li><a href="#trading">Trading</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <div class="hero" id="home">
-        <div class="hero-content">
-            <h1>Integrated Solutions for <span>Growth & Trade</span></h1>
-            <p>Your Trusted Partner in Premium Corporate Consultancy and Bulk Commodity Operations based in Hyderabad.</p>
-            <a href="#contact" class="btn">Get In Touch</a>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">About Us</h2>
+        /* Utilities */
